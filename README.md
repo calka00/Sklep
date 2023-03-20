@@ -5,3 +5,6 @@ Założenia:
 - łącznie z bazą sql 
 - dodawanie do koszyka 
 - wyświetlanie łącznej wartości koszyka 
+
+
+https://imgur.com/a/2HHHYMY
