@@ -8,3 +8,4 @@ Założenia:
 
 
 https://imgur.com/a/2HHHYMY
+https://imgur.com/QmrQQ5L
