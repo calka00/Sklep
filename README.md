@@ -15,4 +15,4 @@ Wykorzystane technologie:
 
 ![image](https://user-images.githubusercontent.com/92309948/232225703-3d003231-b397-4536-a2b9-16d1ec5bff4f.png)
 
-![image](https://user-images.githubusercontent.com/92376466/232334673-6c40104d-7532-477b-9201-e3cf9161e7da.png)
+![image](https://user-images.githubusercontent.com/92376466/232335856-34530228-61d9-40c3-b2da-cdff550462b0.png)
