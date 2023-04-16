@@ -10,6 +10,7 @@ Założenia:
 Wykorzystane technologie:
 - C#
 - HTML/CSS
+- JavaScript
 - ASP.NET
 - SQL
 
