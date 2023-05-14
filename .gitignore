@@ -1,0 +1,5 @@
+// Zawartość .gitignore
+
+packages/
+
+.vs/
