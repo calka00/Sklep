@@ -2,7 +2,7 @@
 Założenia: 
 - wybieranie kategorii 
 - wyświetlania przedmiotów  
-- łącznie z bazą sql 
+- łączenie z bazą sql 
 - dodawanie do koszyka 
 - wyświetlanie łącznej wartości koszyka 
 - możliwość stworzenia konta użytkownika / logowania
