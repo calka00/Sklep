@@ -5,7 +5,7 @@ using Microsoft.Owin.Security;
 
 namespace Sklep_komputerowy.Models
 {
-    public class IndexViewModel
+    public class Main_siteViewModel
     {
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
