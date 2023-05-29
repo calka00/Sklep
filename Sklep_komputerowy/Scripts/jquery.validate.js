@@ -126,7 +126,7 @@ $.extend($.fn, {
 	removeAttrs: function( attributes ) {
 		var result = {},
 			$element = this;
-		$.each(attributes.split(/\s/), function( index, value ) {
+		$.each(attributes.split(/\s/), function( Main_site, value ) {
 			result[value] = $element.attr(value);
 			$element.removeAttr(value);
 		});
@@ -156,7 +156,7 @@ $.extend($.fn, {
 					return existingRules;
 				}
 				var filtered = {};
-				$.each(argument.split(/\s/), function( index, method ) {
+				$.each(argument.split(/\s/), function( Main_site, method ) {
 					filtered[method] = existingRules[method];
 					delete existingRules[method];
 				});
@@ -331,7 +331,7 @@ $.extend($.validator, {
 				if ( typeof value === "string" ) {
 					value = value.split(/\s/);
 				}
-				$.each(value, function( index, name ) {
+				$.each(value, function( Main_site, name ) {
 					groups[name] = key;
 				});
 			});

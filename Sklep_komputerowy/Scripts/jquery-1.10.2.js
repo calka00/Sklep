@@ -66,7 +66,7 @@ var
 	core_concat = core_deletedIds.concat,
 	core_push = core_deletedIds.push,
 	core_slice = core_deletedIds.slice,
-	core_indexOf = core_deletedIds.indexOf,
+	core_Main_siteOf = core_deletedIds.Main_siteOf,
 	core_toString = class2type.toString,
 	core_hasOwn = class2type.hasOwnProperty,
 	core_trim = core_version.trim,
@@ -725,8 +725,8 @@ jQuery.extend({
 		var len;
 
 		if ( arr ) {
-			if ( core_indexOf ) {
-				return core_indexOf.call( arr, elem, i );
+			if ( core_Main_siteOf ) {
+				return core_Main_siteOf.call( arr, elem, i );
 			}
 
 			len = arr.length;
@@ -1073,8 +1073,8 @@ var i,
 	push_native = arr.push,
 	push = arr.push,
 	slice = arr.slice,
-	// Use a stripped-down indexOf if we can't use a native one
-	indexOf = arr.indexOf || function( elem ) {
+	// Use a stripped-down Main_siteOf if we can't use a native one
+	Main_siteOf = arr.Main_siteOf || function( elem ) {
 		var i = 0,
 			len = this.length;
 		for ( ; i < len; i++ ) {
@@ -1376,10 +1376,10 @@ function addHandle( attrs, handler ) {
 function siblingCheck( a, b ) {
 	var cur = b && a,
 		diff = cur && a.nodeType === 1 && b.nodeType === 1 &&
-			( ~b.sourceIndex || MAX_NEGATIVE ) -
-			( ~a.sourceIndex || MAX_NEGATIVE );
+			( ~b.sourceMain_site || MAX_NEGATIVE ) -
+			( ~a.sourceMain_site || MAX_NEGATIVE );
 
-	// Use IE sourceIndex if available on both nodes
+	// Use IE sourceMain_site if available on both nodes
 	if ( diff ) {
 		return diff;
 	}
@@ -1427,12 +1427,12 @@ function createPositionalPseudo( fn ) {
 		argument = +argument;
 		return markFunction(function( seed, matches ) {
 			var j,
-				matchIndexes = fn( [], seed.length, argument ),
-				i = matchIndexes.length;
+				matchMain_sitees = fn( [], seed.length, argument ),
+				i = matchMain_sitees.length;
 
-			// Match elements found at the specified indexes
+			// Match elements found at the specified Main_sitees
 			while ( i-- ) {
-				if ( seed[ (j = matchIndexes[i]) ] ) {
+				if ( seed[ (j = matchMain_sitees[i]) ] ) {
 					seed[j] = !(matches[j] = seed[j]);
 				}
 			}
@@ -1732,7 +1732,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 				// Maintain original order
 				return sortInput ?
-					( indexOf.call( sortInput, a ) - indexOf.call( sortInput, b ) ) :
+					( Main_siteOf.call( sortInput, a ) - Main_siteOf.call( sortInput, b ) ) :
 					0;
 			}
 
@@ -1762,7 +1762,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 				aup ? -1 :
 				bup ? 1 :
 				sortInput ?
-				( indexOf.call( sortInput, a ) - indexOf.call( sortInput, b ) ) :
+				( Main_siteOf.call( sortInput, a ) - Main_siteOf.call( sortInput, b ) ) :
 				0;
 
 		// If the nodes are siblings, we can do a quick check
@@ -2011,9 +2011,9 @@ Expr = Sizzle.selectors = {
 				// Get excess from tokenize (recursively)
 				(excess = tokenize( unquoted, true )) &&
 				// advance to the next closing parenthesis
-				(excess = unquoted.indexOf( ")", unquoted.length - excess ) - unquoted.length) ) {
+				(excess = unquoted.Main_siteOf( ")", unquoted.length - excess ) - unquoted.length) ) {
 
-				// excess is a negative index
+				// excess is a negative Main_site
 				match[0] = match[0].slice( 0, excess );
 				match[2] = unquoted.slice( 0, excess );
 			}
@@ -2059,10 +2059,10 @@ Expr = Sizzle.selectors = {
 
 				return operator === "=" ? result === check :
 					operator === "!=" ? result !== check :
-					operator === "^=" ? check && result.indexOf( check ) === 0 :
-					operator === "*=" ? check && result.indexOf( check ) > -1 :
+					operator === "^=" ? check && result.Main_siteOf( check ) === 0 :
+					operator === "*=" ? check && result.Main_siteOf( check ) > -1 :
 					operator === "$=" ? check && result.slice( -check.length ) === check :
-					operator === "~=" ? ( " " + result + " " ).indexOf( check ) > -1 :
+					operator === "~=" ? ( " " + result + " " ).Main_siteOf( check ) > -1 :
 					operator === "|=" ? result === check || result.slice( 0, check.length + 1 ) === check + "-" :
 					false;
 			};
@@ -2081,7 +2081,7 @@ Expr = Sizzle.selectors = {
 				} :
 
 				function( elem, context, xml ) {
-					var cache, outerCache, node, diff, nodeIndex, start,
+					var cache, outerCache, node, diff, nodeMain_site, start,
 						dir = simple !== forward ? "nextSibling" : "previousSibling",
 						parent = elem.parentNode,
 						name = ofType && elem.nodeName.toLowerCase(),
@@ -2108,37 +2108,37 @@ Expr = Sizzle.selectors = {
 
 						// non-xml :nth-child(...) stores cache data on `parent`
 						if ( forward && useCache ) {
-							// Seek `elem` from a previously-cached index
+							// Seek `elem` from a previously-cached Main_site
 							outerCache = parent[ expando ] || (parent[ expando ] = {});
 							cache = outerCache[ type ] || [];
-							nodeIndex = cache[0] === dirruns && cache[1];
+							nodeMain_site = cache[0] === dirruns && cache[1];
 							diff = cache[0] === dirruns && cache[2];
-							node = nodeIndex && parent.childNodes[ nodeIndex ];
+							node = nodeMain_site && parent.childNodes[ nodeMain_site ];
 
-							while ( (node = ++nodeIndex && node && node[ dir ] ||
+							while ( (node = ++nodeMain_site && node && node[ dir ] ||
 
 								// Fallback to seeking `elem` from the start
-								(diff = nodeIndex = 0) || start.pop()) ) {
+								(diff = nodeMain_site = 0) || start.pop()) ) {
 
-								// When found, cache indexes on `parent` and break
+								// When found, cache Main_sitees on `parent` and break
 								if ( node.nodeType === 1 && ++diff && node === elem ) {
-									outerCache[ type ] = [ dirruns, nodeIndex, diff ];
+									outerCache[ type ] = [ dirruns, nodeMain_site, diff ];
 									break;
 								}
 							}
 
-						// Use previously-cached element index if available
+						// Use previously-cached element Main_site if available
 						} else if ( useCache && (cache = (elem[ expando ] || (elem[ expando ] = {}))[ type ]) && cache[0] === dirruns ) {
 							diff = cache[1];
 
 						// xml :nth-child(...) or :nth-last-child(...) or :nth(-last)?-of-type(...)
 						} else {
 							// Use the same loop as above to seek `elem` from the start
-							while ( (node = ++nodeIndex && node && node[ dir ] ||
-								(diff = nodeIndex = 0) || start.pop()) ) {
+							while ( (node = ++nodeMain_site && node && node[ dir ] ||
+								(diff = nodeMain_site = 0) || start.pop()) ) {
 
 								if ( ( ofType ? node.nodeName.toLowerCase() === name : node.nodeType === 1 ) && ++diff ) {
-									// Cache the index of each encountered element
+									// Cache the Main_site of each encountered element
 									if ( useCache ) {
 										(node[ expando ] || (node[ expando ] = {}))[ type ] = [ dirruns, diff ];
 									}
@@ -2182,7 +2182,7 @@ Expr = Sizzle.selectors = {
 							matched = fn( seed, argument ),
 							i = matched.length;
 						while ( i-- ) {
-							idx = indexOf.call( seed, matched[i] );
+							idx = Main_siteOf.call( seed, matched[i] );
 							seed[ idx ] = !( matches[ idx ] = matched[i] );
 						}
 					}) :
@@ -2233,7 +2233,7 @@ Expr = Sizzle.selectors = {
 
 		"contains": markFunction(function( text ) {
 			return function( elem ) {
-				return ( elem.textContent || elem.innerText || getText( elem ) ).indexOf( text ) > -1;
+				return ( elem.textContent || elem.innerText || getText( elem ) ).Main_siteOf( text ) > -1;
 			};
 		}),
 
@@ -2258,7 +2258,7 @@ Expr = Sizzle.selectors = {
 						elem.getAttribute("xml:lang") || elem.getAttribute("lang")) ) {
 
 						elemLang = elemLang.toLowerCase();
-						return elemLang === lang || elemLang.indexOf( lang + "-" ) === 0;
+						return elemLang === lang || elemLang.Main_siteOf( lang + "-" ) === 0;
 					}
 				} while ( (elem = elem.parentNode) && elem.nodeType === 1 );
 				return false;
@@ -2276,7 +2276,7 @@ Expr = Sizzle.selectors = {
 		},
 
 		"focus": function( elem ) {
-			return elem === document.activeElement && (!document.hasFocus || document.hasFocus()) && !!(elem.type || elem.href || ~elem.tabIndex);
+			return elem === document.activeElement && (!document.hasFocus || document.hasFocus()) && !!(elem.type || elem.href || ~elem.tabMain_site);
 		},
 
 		// Boolean properties
@@ -2299,7 +2299,7 @@ Expr = Sizzle.selectors = {
 			// Accessing this property makes selected-by-default
 			// options in Safari work properly
 			if ( elem.parentNode ) {
-				elem.parentNode.selectedIndex;
+				elem.parentNode.selectedMain_site;
 			}
 
 			return elem.selected === true;
@@ -2352,44 +2352,44 @@ Expr = Sizzle.selectors = {
 			return [ 0 ];
 		}),
 
-		"last": createPositionalPseudo(function( matchIndexes, length ) {
+		"last": createPositionalPseudo(function( matchMain_sitees, length ) {
 			return [ length - 1 ];
 		}),
 
-		"eq": createPositionalPseudo(function( matchIndexes, length, argument ) {
+		"eq": createPositionalPseudo(function( matchMain_sitees, length, argument ) {
 			return [ argument < 0 ? argument + length : argument ];
 		}),
 
-		"even": createPositionalPseudo(function( matchIndexes, length ) {
+		"even": createPositionalPseudo(function( matchMain_sitees, length ) {
 			var i = 0;
 			for ( ; i < length; i += 2 ) {
-				matchIndexes.push( i );
+				matchMain_sitees.push( i );
 			}
-			return matchIndexes;
+			return matchMain_sitees;
 		}),
 
-		"odd": createPositionalPseudo(function( matchIndexes, length ) {
+		"odd": createPositionalPseudo(function( matchMain_sitees, length ) {
 			var i = 1;
 			for ( ; i < length; i += 2 ) {
-				matchIndexes.push( i );
+				matchMain_sitees.push( i );
 			}
-			return matchIndexes;
+			return matchMain_sitees;
 		}),
 
-		"lt": createPositionalPseudo(function( matchIndexes, length, argument ) {
+		"lt": createPositionalPseudo(function( matchMain_sitees, length, argument ) {
 			var i = argument < 0 ? argument + length : argument;
 			for ( ; --i >= 0; ) {
-				matchIndexes.push( i );
+				matchMain_sitees.push( i );
 			}
-			return matchIndexes;
+			return matchMain_sitees;
 		}),
 
-		"gt": createPositionalPseudo(function( matchIndexes, length, argument ) {
+		"gt": createPositionalPseudo(function( matchMain_sitees, length, argument ) {
 			var i = argument < 0 ? argument + length : argument;
 			for ( ; ++i < length; ) {
-				matchIndexes.push( i );
+				matchMain_sitees.push( i );
 			}
-			return matchIndexes;
+			return matchMain_sitees;
 		})
 	}
 };
@@ -2641,7 +2641,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 				i = matcherOut.length;
 				while ( i-- ) {
 					if ( (elem = matcherOut[i]) &&
-						(temp = postFinder ? indexOf.call( seed, elem ) : preMap[i]) > -1 ) {
+						(temp = postFinder ? Main_siteOf.call( seed, elem ) : preMap[i]) > -1 ) {
 
 						seed[temp] = !(results[temp] = elem);
 					}
@@ -2676,7 +2676,7 @@ function matcherFromTokens( tokens ) {
 			return elem === checkContext;
 		}, implicitRelative, true ),
 		matchAnyContext = addCombinator( function( elem ) {
-			return indexOf.call( checkContext, elem ) > -1;
+			return Main_siteOf.call( checkContext, elem ) > -1;
 		}, implicitRelative, true ),
 		matchers = [ function( elem, context, xml ) {
 			return ( !leadingRelative && ( xml || context !== outermostContext ) ) || (
@@ -2791,7 +2791,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 						}
 					}
 
-					// Discard index placeholder values to get only actual matches
+					// Discard Main_site placeholder values to get only actual matches
 					setMatched = condense( setMatched );
 				}
 
@@ -3042,8 +3042,8 @@ jQuery.Callbacks = function( options ) {
 		fired,
 		// End of the loop when firing
 		firingLength,
-		// Index of currently firing callback (modified by remove if needed)
-		firingIndex,
+		// Main_site of currently firing callback (modified by remove if needed)
+		firingMain_site,
 		// First callback to fire (used internally by add and fireWith)
 		firingStart,
 		// Actual callback list
@@ -3054,12 +3054,12 @@ jQuery.Callbacks = function( options ) {
 		fire = function( data ) {
 			memory = options.memory && data;
 			fired = true;
-			firingIndex = firingStart || 0;
+			firingMain_site = firingStart || 0;
 			firingStart = 0;
 			firingLength = list.length;
 			firing = true;
-			for ( ; list && firingIndex < firingLength; firingIndex++ ) {
-				if ( list[ firingIndex ].apply( data[ 0 ], data[ 1 ] ) === false && options.stopOnFalse ) {
+			for ( ; list && firingMain_site < firingLength; firingMain_site++ ) {
+				if ( list[ firingMain_site ].apply( data[ 0 ], data[ 1 ] ) === false && options.stopOnFalse ) {
 					memory = false; // To prevent further calls using add
 					break;
 				}
@@ -3114,16 +3114,16 @@ jQuery.Callbacks = function( options ) {
 			remove: function() {
 				if ( list ) {
 					jQuery.each( arguments, function( _, arg ) {
-						var index;
-						while( ( index = jQuery.inArray( arg, list, index ) ) > -1 ) {
-							list.splice( index, 1 );
-							// Handle firing indexes
+						var Main_site;
+						while( ( Main_site = jQuery.inArray( arg, list, Main_site ) ) > -1 ) {
+							list.splice( Main_site, 1 );
+							// Handle firing Main_sitees
 							if ( firing ) {
-								if ( index <= firingLength ) {
+								if ( Main_site <= firingLength ) {
 									firingLength--;
 								}
-								if ( index <= firingIndex ) {
-									firingIndex--;
+								if ( Main_site <= firingMain_site ) {
+									firingMain_site--;
 								}
 							}
 						}
@@ -3826,7 +3826,7 @@ jQuery.fn.extend({
 					for ( ; i < attrs.length; i++ ) {
 						name = attrs[i].name;
 
-						if ( name.indexOf("data-") === 0 ) {
+						if ( name.Main_siteOf("data-") === 0 ) {
 							name = jQuery.camelCase( name.slice(5) );
 
 							dataAttr( elem, name, data[ name ] );
@@ -4012,7 +4012,7 @@ jQuery.fn.extend({
 		});
 	},
 	// Based off of the plugin by Clint Helfers, with permission.
-	// http://blindsignals.com/index.php/2009/07/jquery-delay/
+	// http://blindsignals.com/Main_site.php/2009/07/jquery-delay/
 	delay: function( time, type ) {
 		time = jQuery.fx ? jQuery.fx.speeds[ time ] || time : time;
 		type = type || "fx";
@@ -4119,7 +4119,7 @@ jQuery.fn.extend({
 				if ( cur ) {
 					j = 0;
 					while ( (clazz = classes[j++]) ) {
-						if ( cur.indexOf( " " + clazz + " " ) < 0 ) {
+						if ( cur.Main_siteOf( " " + clazz + " " ) < 0 ) {
 							cur += clazz + " ";
 						}
 					}
@@ -4158,7 +4158,7 @@ jQuery.fn.extend({
 					j = 0;
 					while ( (clazz = classes[j++]) ) {
 						// Remove *all* instances
-						while ( cur.indexOf( " " + clazz + " " ) >= 0 ) {
+						while ( cur.Main_siteOf( " " + clazz + " " ) >= 0 ) {
 							cur = cur.replace( " " + clazz + " ", " " );
 						}
 					}
@@ -4221,7 +4221,7 @@ jQuery.fn.extend({
 			i = 0,
 			l = this.length;
 		for ( ; i < l; i++ ) {
-			if ( this[i].nodeType === 1 && (" " + this[i].className + " ").replace(rclass, " ").indexOf( className ) >= 0 ) {
+			if ( this[i].nodeType === 1 && (" " + this[i].className + " ").replace(rclass, " ").Main_siteOf( className ) >= 0 ) {
 				return true;
 			}
 		}
@@ -4304,20 +4304,20 @@ jQuery.extend({
 			get: function( elem ) {
 				var value, option,
 					options = elem.options,
-					index = elem.selectedIndex,
-					one = elem.type === "select-one" || index < 0,
+					Main_site = elem.selectedMain_site,
+					one = elem.type === "select-one" || Main_site < 0,
 					values = one ? null : [],
-					max = one ? index + 1 : options.length,
-					i = index < 0 ?
+					max = one ? Main_site + 1 : options.length,
+					i = Main_site < 0 ?
 						max :
-						one ? index : 0;
+						one ? Main_site : 0;
 
 				// Loop through all the selected options
 				for ( ; i < max; i++ ) {
 					option = options[ i ];
 
 					// oldIE doesn't update selected after form reset (#2551)
-					if ( ( option.selected || i === index ) &&
+					if ( ( option.selected || i === Main_site ) &&
 							// Don't return options that are disabled or in a disabled optgroup
 							( jQuery.support.optDisabled ? !option.disabled : option.getAttribute("disabled") === null ) &&
 							( !option.parentNode.disabled || !jQuery.nodeName( option.parentNode, "optgroup" ) ) ) {
@@ -4353,7 +4353,7 @@ jQuery.extend({
 
 				// force browsers to behave consistently when non-matching value is set
 				if ( !optionSet ) {
-					elem.selectedIndex = -1;
+					elem.selectedMain_site = -1;
 				}
 				return values;
 			}
@@ -4491,15 +4491,15 @@ jQuery.extend({
 	},
 
 	propHooks: {
-		tabIndex: {
+		tabMain_site: {
 			get: function( elem ) {
-				// elem.tabIndex doesn't always return the correct value when it hasn't been explicitly set
-				// http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
+				// elem.tabMain_site doesn't always return the correct value when it hasn't been explicitly set
+				// http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabMain_site-values-with-javascript/
 				// Use proper attribute retrieval(#12072)
-				var tabindex = jQuery.find.attr( elem, "tabindex" );
+				var tabMain_site = jQuery.find.attr( elem, "tabMain_site" );
 
-				return tabindex ?
-					parseInt( tabindex, 10 ) :
+				return tabMain_site ?
+					parseInt( tabMain_site, 10 ) :
 					rfocusable.test( elem.nodeName ) || rclickable.test( elem.nodeName ) && elem.href ?
 						0 :
 						-1;
@@ -4661,18 +4661,18 @@ if ( !jQuery.support.style ) {
 }
 
 // Safari mis-reports the default selected property of an option
-// Accessing the parent's selectedIndex property fixes it
+// Accessing the parent's selectedMain_site property fixes it
 if ( !jQuery.support.optSelected ) {
 	jQuery.propHooks.selected = {
 		get: function( elem ) {
 			var parent = elem.parentNode;
 
 			if ( parent ) {
-				parent.selectedIndex;
+				parent.selectedMain_site;
 
 				// Make sure that it also works with optgroups, see #5701
 				if ( parent.parentNode ) {
-					parent.parentNode.selectedIndex;
+					parent.parentNode.selectedMain_site;
 				}
 			}
 			return null;
@@ -4681,7 +4681,7 @@ if ( !jQuery.support.optSelected ) {
 }
 
 jQuery.each([
-	"tabIndex",
+	"tabMain_site",
 	"readOnly",
 	"maxLength",
 	"cellSpacing",
@@ -4951,13 +4951,13 @@ jQuery.event = {
 			return;
 		}
 
-		if ( type.indexOf(".") >= 0 ) {
+		if ( type.Main_siteOf(".") >= 0 ) {
 			// Namespaced trigger; create a regexp to match event type in handle()
 			namespaces = type.split(".");
 			type = namespaces.shift();
 			namespaces.sort();
 		}
-		ontype = type.indexOf(":") < 0 && "on" + type;
+		ontype = type.Main_siteOf(":") < 0 && "on" + type;
 
 		// Caller can pass in a jQuery.Event object, Object, or just an event type string
 		event = event[ jQuery.expando ] ?
@@ -5153,7 +5153,7 @@ jQuery.event = {
 
 						if ( matches[ sel ] === undefined ) {
 							matches[ sel ] = handleObj.needsContext ?
-								jQuery( sel, this ).index( cur ) >= 0 :
+								jQuery( sel, this ).Main_site( cur ) >= 0 :
 								jQuery.find( sel, this, null, [ cur ] ).length;
 						}
 						if ( matches[ sel ] ) {
@@ -5798,7 +5798,7 @@ jQuery.fn.extend({
 			for ( cur = this[i]; cur && cur !== context; cur = cur.parentNode ) {
 				// Always skip document fragments
 				if ( cur.nodeType < 11 && (pos ?
-					pos.index(cur) > -1 :
+					pos.Main_site(cur) > -1 :
 
 					// Don't pass non-elements to Sizzle
 					cur.nodeType === 1 &&
@@ -5815,14 +5815,14 @@ jQuery.fn.extend({
 
 	// Determine the position of an element within
 	// the matched set of elements
-	index: function( elem ) {
+	Main_site: function( elem ) {
 
-		// No argument, return index in parent
+		// No argument, return Main_site in parent
 		if ( !elem ) {
 			return ( this[0] && this[0].parentNode ) ? this.first().prevAll().length : -1;
 		}
 
-		// index in selector
+		// Main_site in selector
 		if ( typeof elem === "string" ) {
 			return jQuery.inArray( this[0], jQuery( elem ) );
 		}
@@ -6238,10 +6238,10 @@ jQuery.fn.extend({
 
 		// We can't cloneNode fragments that contain checked, in WebKit
 		if ( isFunction || !( l <= 1 || typeof value !== "string" || jQuery.support.checkClone || !rchecked.test( value ) ) ) {
-			return this.each(function( index ) {
-				var self = set.eq( index );
+			return this.each(function( Main_site ) {
+				var self = set.eq( Main_site );
 				if ( isFunction ) {
-					args[0] = value.call( this, index, self.html() );
+					args[0] = value.call( this, Main_site, self.html() );
 				}
 				self.domManip( args, callback, allowIntersection );
 			});
@@ -6860,21 +6860,21 @@ function isHidden( elem, el ) {
 function showHide( elements, show ) {
 	var display, elem, hidden,
 		values = [],
-		index = 0,
+		Main_site = 0,
 		length = elements.length;
 
-	for ( ; index < length; index++ ) {
-		elem = elements[ index ];
+	for ( ; Main_site < length; Main_site++ ) {
+		elem = elements[ Main_site ];
 		if ( !elem.style ) {
 			continue;
 		}
 
-		values[ index ] = jQuery._data( elem, "olddisplay" );
+		values[ Main_site ] = jQuery._data( elem, "olddisplay" );
 		display = elem.style.display;
 		if ( show ) {
 			// Reset the inline display of this element to learn if it is
 			// being hidden by cascaded rules or not
-			if ( !values[ index ] && display === "none" ) {
+			if ( !values[ Main_site ] && display === "none" ) {
 				elem.style.display = "";
 			}
 
@@ -6882,11 +6882,11 @@ function showHide( elements, show ) {
 			// in a stylesheet to whatever the default browser style is
 			// for such an element
 			if ( elem.style.display === "" && isHidden( elem ) ) {
-				values[ index ] = jQuery._data( elem, "olddisplay", css_defaultDisplay(elem.nodeName) );
+				values[ Main_site ] = jQuery._data( elem, "olddisplay", css_defaultDisplay(elem.nodeName) );
 			}
 		} else {
 
-			if ( !values[ index ] ) {
+			if ( !values[ Main_site ] ) {
 				hidden = isHidden( elem );
 
 				if ( display && display !== "none" || !hidden ) {
@@ -6898,13 +6898,13 @@ function showHide( elements, show ) {
 
 	// Set the display of most of the elements in a second loop
 	// to avoid the constant reflow
-	for ( index = 0; index < length; index++ ) {
-		elem = elements[ index ];
+	for ( Main_site = 0; Main_site < length; Main_site++ ) {
+		elem = elements[ Main_site ];
 		if ( !elem.style ) {
 			continue;
 		}
 		if ( !show || elem.style.display === "none" || elem.style.display === "" ) {
-			elem.style.display = show ? values[ index ] || "" : "none";
+			elem.style.display = show ? values[ Main_site ] || "" : "none";
 		}
 	}
 
@@ -6980,7 +6980,7 @@ jQuery.extend({
 		"order": true,
 		"orphans": true,
 		"widows": true,
-		"zIndex": true,
+		"zMain_site": true,
 		"zoom": true
 	},
 
@@ -7032,7 +7032,7 @@ jQuery.extend({
 
 			// Fixes #8908, it can be done more correctly by specifing setters in cssHooks,
 			// but it would mean to define eight (for every problematic property) identical functions
-			if ( !jQuery.support.clearCloneStyle && value === "" && name.indexOf("background") === 0 ) {
+			if ( !jQuery.support.clearCloneStyle && value === "" && name.Main_siteOf("background") === 0 ) {
 				style[ name ] = "inherit";
 			}
 
@@ -7549,7 +7549,7 @@ function buildParams( prefix, obj, traditional, add ) {
 				add( prefix, v );
 
 			} else {
-				// Item is non-scalar (array or object), encode its numeric index.
+				// Item is non-scalar (array or object), encode its numeric Main_site.
 				buildParams( prefix + "[" + ( typeof v === "object" ? i : "" ) + "]", v, traditional, add );
 			}
 		});
@@ -7735,7 +7735,7 @@ jQuery.fn.load = function( url, params, callback ) {
 
 	var selector, response, type,
 		self = this,
-		off = url.indexOf(" ");
+		off = url.Main_siteOf(" ");
 
 	if ( off >= 0 ) {
 		selector = url.slice( off, url.length );
@@ -8557,7 +8557,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 	var callbackName, overwritten, responseContainer,
 		jsonProp = s.jsonp !== false && ( rjsonp.test( s.url ) ?
 			"url" :
-			typeof s.data === "string" && !( s.contentType || "" ).indexOf("application/x-www-form-urlencoded") && rjsonp.test( s.data ) && "data"
+			typeof s.data === "string" && !( s.contentType || "" ).Main_siteOf("application/x-www-form-urlencoded") && rjsonp.test( s.data ) && "data"
 		);
 
 	// Handle iff the expected data type is "jsonp" or we have a parameter to set
@@ -8725,7 +8725,7 @@ if ( xhrSupported ) {
 
 						// Firefox throws exceptions when accessing properties
 						// of an xhr when a network error occurred
-						// http://helpful.knobs-dials.com/index.php/Component_returned_failure_code:_0x80040111_(NS_ERROR_NOT_AVAILABLE)
+						// http://helpful.knobs-dials.com/Main_site.php/Component_returned_failure_code:_0x80040111_(NS_ERROR_NOT_AVAILABLE)
 						try {
 
 							// Was never called and is aborted or complete
@@ -8892,10 +8892,10 @@ function createFxNow() {
 function createTween( value, prop, animation ) {
 	var tween,
 		collection = ( tweeners[ prop ] || [] ).concat( tweeners[ "*" ] ),
-		index = 0,
+		Main_site = 0,
 		length = collection.length;
-	for ( ; index < length; index++ ) {
-		if ( (tween = collection[ index ].call( animation, prop, value )) ) {
+	for ( ; Main_site < length; Main_site++ ) {
+		if ( (tween = collection[ Main_site ].call( animation, prop, value )) ) {
 
 			// we're done with this property
 			return tween;
@@ -8906,7 +8906,7 @@ function createTween( value, prop, animation ) {
 function Animation( elem, properties, options ) {
 	var result,
 		stopped,
-		index = 0,
+		Main_site = 0,
 		length = animationPrefilters.length,
 		deferred = jQuery.Deferred().always( function() {
 			// don't match elem in the :animated selector
@@ -8921,11 +8921,11 @@ function Animation( elem, properties, options ) {
 				// archaic crash bug won't allow us to use 1 - ( 0.5 || 0 ) (#12497)
 				temp = remaining / animation.duration || 0,
 				percent = 1 - temp,
-				index = 0,
+				Main_site = 0,
 				length = animation.tweens.length;
 
-			for ( ; index < length ; index++ ) {
-				animation.tweens[ index ].run( percent );
+			for ( ; Main_site < length ; Main_site++ ) {
+				animation.tweens[ Main_site ].run( percent );
 			}
 
 			deferred.notifyWith( elem, [ animation, percent, remaining ]);
@@ -8953,7 +8953,7 @@ function Animation( elem, properties, options ) {
 				return tween;
 			},
 			stop: function( gotoEnd ) {
-				var index = 0,
+				var Main_site = 0,
 					// if we are going to the end, we want to run all the tweens
 					// otherwise we skip this part
 					length = gotoEnd ? animation.tweens.length : 0;
@@ -8961,8 +8961,8 @@ function Animation( elem, properties, options ) {
 					return this;
 				}
 				stopped = true;
-				for ( ; index < length ; index++ ) {
-					animation.tweens[ index ].run( 1 );
+				for ( ; Main_site < length ; Main_site++ ) {
+					animation.tweens[ Main_site ].run( 1 );
 				}
 
 				// resolve when we played the last frame
@@ -8979,8 +8979,8 @@ function Animation( elem, properties, options ) {
 
 	propFilter( props, animation.opts.specialEasing );
 
-	for ( ; index < length ; index++ ) {
-		result = animationPrefilters[ index ].call( animation, elem, props, animation.opts );
+	for ( ; Main_site < length ; Main_site++ ) {
+		result = animationPrefilters[ Main_site ].call( animation, elem, props, animation.opts );
 		if ( result ) {
 			return result;
 		}
@@ -9008,21 +9008,21 @@ function Animation( elem, properties, options ) {
 }
 
 function propFilter( props, specialEasing ) {
-	var index, name, easing, value, hooks;
+	var Main_site, name, easing, value, hooks;
 
 	// camelCase, specialEasing and expand cssHook pass
-	for ( index in props ) {
-		name = jQuery.camelCase( index );
+	for ( Main_site in props ) {
+		name = jQuery.camelCase( Main_site );
 		easing = specialEasing[ name ];
-		value = props[ index ];
+		value = props[ Main_site ];
 		if ( jQuery.isArray( value ) ) {
 			easing = value[ 1 ];
-			value = props[ index ] = value[ 0 ];
+			value = props[ Main_site ] = value[ 0 ];
 		}
 
-		if ( index !== name ) {
+		if ( Main_site !== name ) {
 			props[ name ] = value;
-			delete props[ index ];
+			delete props[ Main_site ];
 		}
 
 		hooks = jQuery.cssHooks[ name ];
@@ -9031,11 +9031,11 @@ function propFilter( props, specialEasing ) {
 			delete props[ name ];
 
 			// not quite $.extend, this wont overwrite keys already present.
-			// also - reusing 'index' from above because we have the correct "name"
-			for ( index in value ) {
-				if ( !( index in props ) ) {
-					props[ index ] = value[ index ];
-					specialEasing[ index ] = easing;
+			// also - reusing 'Main_site' from above because we have the correct "name"
+			for ( Main_site in value ) {
+				if ( !( Main_site in props ) ) {
+					props[ Main_site ] = value[ Main_site ];
+					specialEasing[ Main_site ] = easing;
 				}
 			}
 		} else {
@@ -9055,11 +9055,11 @@ jQuery.Animation = jQuery.extend( Animation, {
 		}
 
 		var prop,
-			index = 0,
+			Main_site = 0,
 			length = props.length;
 
-		for ( ; index < length ; index++ ) {
-			prop = props[ index ];
+		for ( ; Main_site < length ; Main_site++ ) {
+			prop = props[ Main_site ];
 			tweeners[ prop ] = tweeners[ prop ] || [];
 			tweeners[ prop ].unshift( callback );
 		}
@@ -9347,27 +9347,27 @@ jQuery.fn.extend({
 
 		return this.each(function() {
 			var dequeue = true,
-				index = type != null && type + "queueHooks",
+				Main_site = type != null && type + "queueHooks",
 				timers = jQuery.timers,
 				data = jQuery._data( this );
 
-			if ( index ) {
-				if ( data[ index ] && data[ index ].stop ) {
-					stopQueue( data[ index ] );
+			if ( Main_site ) {
+				if ( data[ Main_site ] && data[ Main_site ].stop ) {
+					stopQueue( data[ Main_site ] );
 				}
 			} else {
-				for ( index in data ) {
-					if ( data[ index ] && data[ index ].stop && rrun.test( index ) ) {
-						stopQueue( data[ index ] );
+				for ( Main_site in data ) {
+					if ( data[ Main_site ] && data[ Main_site ].stop && rrun.test( Main_site ) ) {
+						stopQueue( data[ Main_site ] );
 					}
 				}
 			}
 
-			for ( index = timers.length; index--; ) {
-				if ( timers[ index ].elem === this && (type == null || timers[ index ].queue === type) ) {
-					timers[ index ].anim.stop( gotoEnd );
+			for ( Main_site = timers.length; Main_site--; ) {
+				if ( timers[ Main_site ].elem === this && (type == null || timers[ Main_site ].queue === type) ) {
+					timers[ Main_site ].anim.stop( gotoEnd );
 					dequeue = false;
-					timers.splice( index, 1 );
+					timers.splice( Main_site, 1 );
 				}
 			}
 
@@ -9384,7 +9384,7 @@ jQuery.fn.extend({
 			type = type || "fx";
 		}
 		return this.each(function() {
-			var index,
+			var Main_site,
 				data = jQuery._data( this ),
 				queue = data[ type + "queue" ],
 				hooks = data[ type + "queueHooks" ],
@@ -9402,17 +9402,17 @@ jQuery.fn.extend({
 			}
 
 			// look for any active animations, and finish them
-			for ( index = timers.length; index--; ) {
-				if ( timers[ index ].elem === this && timers[ index ].queue === type ) {
-					timers[ index ].anim.stop( true );
-					timers.splice( index, 1 );
+			for ( Main_site = timers.length; Main_site--; ) {
+				if ( timers[ Main_site ].elem === this && timers[ Main_site ].queue === type ) {
+					timers[ Main_site ].anim.stop( true );
+					timers.splice( Main_site, 1 );
 				}
 			}
 
 			// look for any animations in the old queue and finish them
-			for ( index = 0; index < length; index++ ) {
-				if ( queue[ index ] && queue[ index ].finish ) {
-					queue[ index ].finish.call( this );
+			for ( Main_site = 0; Main_site < length; Main_site++ ) {
+				if ( queue[ Main_site ] && queue[ Main_site ].finish ) {
+					queue[ Main_site ].finish.call( this );
 				}
 			}
 

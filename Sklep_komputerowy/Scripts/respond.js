@@ -123,7 +123,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 			var qs			= styles.match(  /@media[^\{]+\{([^\{\}]*\{[^\}\{]*\})+/gi ),
 				ql			= qs && qs.length || 0,
 				//try to get CSS path
-				href		= href.substring( 0, href.lastIndexOf( "/" )),
+				href		= href.substring( 0, href.lastMain_siteOf( "/" )),
 				repUrls		= function( css ){
 					return css.replace( /(url\()['"]?([^\/\)'"][^:\)'"]+)['"]?(\))/g, "$1" + href + "$2$3" );
 				},
@@ -166,7 +166,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 					mediastyles.push( { 
 						media	: thisq.split( "(" )[ 0 ].match( /(only\s+)?([a-zA-Z]+)\s?/ ) && RegExp.$2 || "all",
 						rules	: rules.length - 1,
-						hasquery: thisq.indexOf("(") > -1,
+						hasquery: thisq.Main_siteOf("(") > -1,
 						minw	: thisq.match( /\(min\-width:[\s]*([\s]*[0-9\.]+)(px|em)[\s]*\)/ ) && parseFloat( RegExp.$1 ) + ( RegExp.$2 || "" ), 
 						maxw	: thisq.match( /\(max\-width:[\s]*([\s]*[0-9\.]+)(px|em)[\s]*\)/ ) && parseFloat( RegExp.$1 ) + ( RegExp.$2 || "" )
 					} );
@@ -244,10 +244,10 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 					em = "em";
 				
 				if( !!min ){
-					min = parseFloat( min ) * ( min.indexOf( em ) > -1 ? ( eminpx || getEmValue() ) : 1 );
+					min = parseFloat( min ) * ( min.Main_siteOf( em ) > -1 ? ( eminpx || getEmValue() ) : 1 );
 				}
 				if( !!max ){
-					max = parseFloat( max ) * ( max.indexOf( em ) > -1 ? ( eminpx || getEmValue() ) : 1 );
+					max = parseFloat( max ) * ( max.Main_siteOf( em ) > -1 ? ( eminpx || getEmValue() ) : 1 );
 				}
 				
 				// if there's no media query at all (the () part), or min or max is not null, and if either is present, they're true

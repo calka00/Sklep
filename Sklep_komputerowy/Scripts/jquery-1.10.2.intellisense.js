@@ -106,9 +106,9 @@ intellisense.annotate(jQuery, {
   },
   'each': function() {
     /// <signature>
-    ///   <summary>A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function's arguments object) are iterated by numeric index, from 0 to length-1. Other objects are iterated via their named properties.</summary>
+    ///   <summary>A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function's arguments object) are iterated by numeric Main_site, from 0 to length-1. Other objects are iterated via their named properties.</summary>
     ///   <param name="collection" type="Object">The object or array to iterate over.</param>
-    ///   <param name="callback(indexInArray, valueOfElement)" type="Function">The function that will be executed on every object.</param>
+    ///   <param name="callback(Main_siteInArray, valueOfElement)" type="Function">The function that will be executed on every object.</param>
     ///   <returns type="Object" />
     /// </signature>
   },
@@ -172,7 +172,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Finds the elements of an array which satisfy a filter function. The original array is not affected.</summary>
     ///   <param name="array" type="Array">The array to search through.</param>
-    ///   <param name="function(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the item, and the second argument is the index.  The function should return a Boolean value.  this will be the global window object.</param>
+    ///   <param name="function(elementOfArray, Main_siteInArray)" type="Function">The function to process each item against.  The first argument to the function is the item, and the second argument is the Main_site.  The function should return a Boolean value.  this will be the global window object.</param>
     ///   <param name="invert" type="Boolean">If "invert" is false, or not provided, then the function returns an array consisting of all elements for which "callback" returns true.  If "invert" is true, then the function returns an array consisting of all elements for which "callback" returns false.</param>
     ///   <returns type="Array" />
     /// </signature>
@@ -192,10 +192,10 @@ intellisense.annotate(jQuery, {
   },
   'inArray': function() {
     /// <signature>
-    ///   <summary>Search for a specified value within an array and return its index (or -1 if not found).</summary>
+    ///   <summary>Search for a specified value within an array and return its Main_site (or -1 if not found).</summary>
     ///   <param name="value" type="Anything">The value to search for.</param>
     ///   <param name="array" type="Array">An array through which to search.</param>
-    ///   <param name="fromIndex" type="Number">The index of the array at which to begin the search. The default is 0, which will search the whole array.</param>
+    ///   <param name="fromMain_site" type="Number">The Main_site of the array at which to begin the search. The default is 0, which will search the whole array.</param>
     ///   <returns type="Number" />
     /// </signature>
   },
@@ -259,13 +259,13 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Translate all items in an array or object to new array of items.</summary>
     ///   <param name="array" type="Array">The Array to translate.</param>
-    ///   <param name="callback(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the array item, the second argument is the index in array The function can return any value. Within the function, this refers to the global (window) object.</param>
+    ///   <param name="callback(elementOfArray, Main_siteInArray)" type="Function">The function to process each item against.  The first argument to the function is the array item, the second argument is the Main_site in array The function can return any value. Within the function, this refers to the global (window) object.</param>
     ///   <returns type="Array" />
     /// </signature>
     /// <signature>
     ///   <summary>Translate all items in an array or object to new array of items.</summary>
     ///   <param name="arrayOrObject" type="Object">The Array or Object to translate.</param>
-    ///   <param name="callback( value, indexOrKey )" type="Function">The function to process each item against.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
+    ///   <param name="callback( value, Main_siteOrKey )" type="Function">The function to process each item against.  The first argument to the function is the value; the second argument is the Main_site or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
     ///   <returns type="Array" />
     /// </signature>
   },
@@ -759,7 +759,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Adds the specified class(es) to each of the set of matched elements.</summary>
-    ///   <param name="function(index, currentClass)" type="Function">A function returning one or more space-separated class names to be added to the existing class name(s). Receives the index position of the element in the set and the existing class name(s) as arguments. Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function(Main_site, currentClass)" type="Function">A function returning one or more space-separated class names to be added to the existing class name(s). Receives the Main_site position of the element in the set and the existing class name(s) as arguments. Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -772,7 +772,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Insert content, specified by the parameter, after each element in the set of matched elements.</summary>
-    ///   <param name="function(index)" type="Function">A function that returns an HTML string, DOM element(s), or jQuery object to insert after each element in the set of matched elements. Receives the index position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function(Main_site)" type="Function">A function that returns an HTML string, DOM element(s), or jQuery object to insert after each element in the set of matched elements. Receives the Main_site position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -853,7 +853,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Insert content, specified by the parameter, to the end of each element in the set of matched elements.</summary>
-    ///   <param name="function(index, html)" type="Function">A function that returns an HTML string, DOM element(s), or jQuery object to insert at the end of each element in the set of matched elements. Receives the index position of the element in the set and the old HTML value of the element as arguments. Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function(Main_site, html)" type="Function">A function that returns an HTML string, DOM element(s), or jQuery object to insert at the end of each element in the set of matched elements. Receives the Main_site position of the element in the set and the old HTML value of the element as arguments. Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -879,7 +879,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Set one or more attributes for the set of matched elements.</summary>
     ///   <param name="attributeName" type="String">The name of the attribute to set.</param>
-    ///   <param name="function(index, attr)" type="Function">A function returning the value to set. this is the current element. Receives the index position of the element in the set and the old attribute value as arguments.</param>
+    ///   <param name="function(Main_site, attr)" type="Function">A function returning the value to set. this is the current element. Receives the Main_site position of the element in the set and the old attribute value as arguments.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -955,7 +955,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Insert content, specified by the parameter, before each element in the set of matched elements.</summary>
-    ///   <param name="function" type="Function">A function that returns an HTML string, DOM element(s), or jQuery object to insert before each element in the set of matched elements. Receives the index position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function" type="Function">A function that returns an HTML string, DOM element(s), or jQuery object to insert before each element in the set of matched elements. Receives the Main_site position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1115,7 +1115,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Set one or more CSS properties for the set of matched elements.</summary>
     ///   <param name="propertyName" type="String">A CSS property name.</param>
-    ///   <param name="function(index, value)" type="Function">A function returning the value to set. this is the current element. Receives the index position of the element in the set and the old value as arguments.</param>
+    ///   <param name="function(Main_site, value)" type="Function">A function returning the value to set. this is the current element. Receives the Main_site position of the element in the set and the old value as arguments.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1221,7 +1221,7 @@ intellisense.annotate(jQuery.fn, {
   'each': function() {
     /// <signature>
     ///   <summary>Iterate over a jQuery object, executing a function for each matched element.</summary>
-    ///   <param name="function(index, Element)" type="Function">A function to execute for each matched element.</param>
+    ///   <param name="function(Main_site, Element)" type="Function">A function to execute for each matched element.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1243,12 +1243,12 @@ intellisense.annotate(jQuery.fn, {
   },
   'eq': function() {
     /// <signature>
-    ///   <summary>Select the element at index n within the matched set.</summary>
-    ///   <param name="index" type="Number">Zero-based index of the element to match.</param>
+    ///   <summary>Select the element at Main_site n within the matched set.</summary>
+    ///   <param name="Main_site" type="Number">Zero-based Main_site of the element to match.</param>
     /// </signature>
     /// <signature>
-    ///   <summary>Select the element at index n within the matched set.</summary>
-    ///   <param name="-index" type="Number">Zero-based index of the element to match, counting backwards from the last element.</param>
+    ///   <summary>Select the element at Main_site n within the matched set.</summary>
+    ///   <param name="-Main_site" type="Number">Zero-based Main_site of the element to match, counting backwards from the last element.</param>
     /// </signature>
   },
   'error': function() {
@@ -1265,7 +1265,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
   },
   'even': function() {
-    /// <summary>Selects even elements, zero-indexed.  See also odd.</summary>
+    /// <summary>Selects even elements, zero-Main_siteed.  See also odd.</summary>
   },
   'fadeIn': function() {
     /// <signature>
@@ -1349,7 +1349,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Reduce the set of matched elements to those that match the selector or pass the function's test.</summary>
-    ///   <param name="function(index)" type="Function">A function used as a test for each element in the set. this is the current DOM element.</param>
+    ///   <param name="function(Main_site)" type="Function">A function used as a test for each element in the set. this is the current DOM element.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1438,14 +1438,14 @@ intellisense.annotate(jQuery.fn, {
   'get': function() {
     /// <signature>
     ///   <summary>Retrieve the DOM elements matched by the jQuery object.</summary>
-    ///   <param name="index" type="Number">A zero-based integer indicating which element to retrieve.</param>
+    ///   <param name="Main_site" type="Number">A zero-based integer indicating which element to retrieve.</param>
     ///   <returns type="Element, Array" />
     /// </signature>
   },
   'gt': function() {
     /// <signature>
-    ///   <summary>Select all elements at an index greater than index within the matched set.</summary>
-    ///   <param name="index" type="Number">Zero-based index.</param>
+    ///   <summary>Select all elements at an Main_site greater than Main_site within the matched set.</summary>
+    ///   <param name="Main_site" type="Number">Zero-based Main_site.</param>
     /// </signature>
   },
   'has': function() {
@@ -1478,7 +1478,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Set the CSS height of every matched element.</summary>
-    ///   <param name="function(index, height)" type="Function">A function returning the height to set. Receives the index position of the element in the set and the old height as arguments. Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function(Main_site, height)" type="Function">A function returning the height to set. Receives the Main_site position of the element in the set and the old height as arguments. Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1521,7 +1521,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Set the HTML contents of each element in the set of matched elements.</summary>
-    ///   <param name="function(index, oldhtml)" type="Function">A function returning the HTML content to set. Receives the           index position of the element in the set and the old HTML value as arguments.           jQuery empties the element before calling the function;           use the oldhtml argument to reference the previous content.           Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function(Main_site, oldhtml)" type="Function">A function returning the HTML content to set. Receives the           Main_site position of the element in the set and the old HTML value as arguments.           jQuery empties the element before calling the function;           use the oldhtml argument to reference the previous content.           Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1534,7 +1534,7 @@ intellisense.annotate(jQuery.fn, {
   'image': function() {
     /// <summary>Selects all elements of type image.</summary>
   },
-  'index': function() {
+  'Main_site': function() {
     /// <signature>
     ///   <summary>Search for a given element from among the matched elements.</summary>
     ///   <param name="selector" type="String">A selector representing a jQuery collection in which to look for an element.</param>
@@ -1607,7 +1607,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
-    ///   <param name="function(index)" type="Function">A function used as a test for the set of elements. It accepts one argument, index, which is the element's index in the jQuery collection.Within the function, this refers to the current DOM element.</param>
+    ///   <param name="function(Main_site)" type="Function">A function used as a test for the set of elements. It accepts one argument, Main_site, which is the element's Main_site in the jQuery collection.Within the function, this refers to the current DOM element.</param>
     ///   <returns type="Boolean" />
     /// </signature>
     /// <signature>
@@ -1718,14 +1718,14 @@ intellisense.annotate(jQuery.fn, {
   },
   'lt': function() {
     /// <signature>
-    ///   <summary>Select all elements at an index less than index within the matched set.</summary>
-    ///   <param name="index" type="Number">Zero-based index.</param>
+    ///   <summary>Select all elements at an Main_site less than Main_site within the matched set.</summary>
+    ///   <param name="Main_site" type="Number">Zero-based Main_site.</param>
     /// </signature>
   },
   'map': function() {
     /// <signature>
     ///   <summary>Pass each element in the current matched set through a function, producing a new jQuery object containing the return values.</summary>
-    ///   <param name="callback(index, domElement)" type="Function">A function object that will be invoked for each element in the current set.</param>
+    ///   <param name="callback(Main_site, domElement)" type="Function">A function object that will be invoked for each element in the current set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1883,7 +1883,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Remove elements from the set of matched elements.</summary>
-    ///   <param name="function(index)" type="Function">A function used as a test for each element in the set. this is the current DOM element.</param>
+    ///   <param name="function(Main_site)" type="Function">A function used as a test for each element in the set. this is the current DOM element.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1895,29 +1895,29 @@ intellisense.annotate(jQuery.fn, {
   'nth-child': function() {
     /// <signature>
     ///   <summary>Selects all elements that are the nth-child of their parent.</summary>
-    ///   <param name="index" type="String">The index of each child to match, starting with 1, the string even or odd, or an equation ( eg. :nth-child(even), :nth-child(4n) )</param>
+    ///   <param name="Main_site" type="String">The Main_site of each child to match, starting with 1, the string even or odd, or an equation ( eg. :nth-child(even), :nth-child(4n) )</param>
     /// </signature>
   },
   'nth-last-child': function() {
     /// <signature>
     ///   <summary>Selects all elements that are the nth-child of their parent, counting from the last element to the first.</summary>
-    ///   <param name="index" type="String">The index of each child to match, starting with the last one (1), the string even or odd, or an equation ( eg. :nth-last-child(even), :nth-last-child(4n) )</param>
+    ///   <param name="Main_site" type="String">The Main_site of each child to match, starting with the last one (1), the string even or odd, or an equation ( eg. :nth-last-child(even), :nth-last-child(4n) )</param>
     /// </signature>
   },
   'nth-last-of-type': function() {
     /// <signature>
     ///   <summary>Selects all elements that are the nth-child of their parent, counting from the last element to the first.</summary>
-    ///   <param name="index" type="String">The index of each child to match, starting with the last one (1), the string even or odd, or an equation ( eg. :nth-last-of-type(even), :nth-last-of-type(4n) )</param>
+    ///   <param name="Main_site" type="String">The Main_site of each child to match, starting with the last one (1), the string even or odd, or an equation ( eg. :nth-last-of-type(even), :nth-last-of-type(4n) )</param>
     /// </signature>
   },
   'nth-of-type': function() {
     /// <signature>
     ///   <summary>Selects all elements that are the nth child of their parent in relation to siblings with the same element name.</summary>
-    ///   <param name="index" type="String">The index of each child to match, starting with 1, the string even or odd, or an equation ( eg. :nth-of-type(even), :nth-of-type(4n) )</param>
+    ///   <param name="Main_site" type="String">The Main_site of each child to match, starting with 1, the string even or odd, or an equation ( eg. :nth-of-type(even), :nth-of-type(4n) )</param>
     /// </signature>
   },
   'odd': function() {
-    /// <summary>Selects odd elements, zero-indexed.  See also even.</summary>
+    /// <summary>Selects odd elements, zero-Main_siteed.  See also even.</summary>
   },
   'off': function() {
     /// <signature>
@@ -1942,7 +1942,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Set the current coordinates of every element in the set of matched elements, relative to the document.</summary>
-    ///   <param name="function(index, coords)" type="Function">A function to return the coordinates to set. Receives the index of the element in the collection as the first argument and the current coordinates as the second argument. The function should return an object with the new top and left properties.</param>
+    ///   <param name="function(Main_site, coords)" type="Function">A function to return the coordinates to set. Receives the Main_site of the element in the collection as the first argument and the current coordinates as the second argument. The function should return an object with the new top and left properties.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2055,7 +2055,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Insert content, specified by the parameter, to the beginning of each element in the set of matched elements.</summary>
-    ///   <param name="function(index, html)" type="Function">A function that returns an HTML string, DOM element(s), or jQuery object to insert at the beginning of each element in the set of matched elements. Receives the index position of the element in the set and the old HTML value of the element as arguments. Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function(Main_site, html)" type="Function">A function that returns an HTML string, DOM element(s), or jQuery object to insert at the beginning of each element in the set of matched elements. Receives the Main_site position of the element in the set and the old HTML value of the element as arguments. Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2117,7 +2117,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Set one or more properties for the set of matched elements.</summary>
     ///   <param name="propertyName" type="String">The name of the property to set.</param>
-    ///   <param name="function(index, oldPropertyValue)" type="Function">A function returning the value to set. Receives the index position of the element in the set and the old property value as arguments. Within the function, the keyword this refers to the current element.</param>
+    ///   <param name="function(Main_site, oldPropertyValue)" type="Function">A function returning the value to set. Receives the Main_site position of the element in the set and the old property value as arguments. Within the function, the keyword this refers to the current element.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2181,7 +2181,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Remove a single class, multiple classes, or all classes from each element in the set of matched elements.</summary>
-    ///   <param name="function(index, class)" type="Function">A function returning one or more space-separated class names to be removed. Receives the index position of the element in the set and the old class value as arguments.</param>
+    ///   <param name="function(Main_site, class)" type="Function">A function returning one or more space-separated class names to be removed. Receives the Main_site position of the element in the set and the old class value as arguments.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2242,7 +2242,7 @@ intellisense.annotate(jQuery.fn, {
   'root': function() {
     /// <signature>
     ///   <summary>Selects the element that is the root of the document.</summary>
-    ///   <param name="index" type="String">The index of each child to match, starting with 1, the string even or odd, or an equation ( eg. :nth-last-child(even), :nth-last-child(4n) )</param>
+    ///   <param name="Main_site" type="String">The Main_site of each child to match, starting with 1, the string even or odd, or an equation ( eg. :nth-last-child(even), :nth-last-child(4n) )</param>
     /// </signature>
   },
   'scroll': function() {
@@ -2438,7 +2438,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Set the content of each element in the set of matched elements to the specified text.</summary>
-    ///   <param name="function(index, text)" type="Function">A function returning the text content to set. Receives the index position of the element in the set and the old text value as arguments.</param>
+    ///   <param name="function(Main_site, text)" type="Function">A function returning the text content to set. Receives the Main_site position of the element in the set and the old text value as arguments.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2490,7 +2490,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</summary>
-    ///   <param name="function(index, class, switch)" type="Function">A function that returns class names to be toggled in the class attribute of each element in the matched set. Receives the index position of the element in the set, the old class value, and the switch as arguments.</param>
+    ///   <param name="function(Main_site, class, switch)" type="Function">A function that returns class names to be toggled in the class attribute of each element in the matched set. Receives the Main_site position of the element in the set, the old class value, and the switch as arguments.</param>
     ///   <param name="switch" type="Boolean">A boolean value to determine whether the class should be added or removed.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -2586,7 +2586,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Set the value of each element in the set of matched elements.</summary>
-    ///   <param name="function(index, value)" type="Function">A function returning the value to set. this is the current element. Receives the index position of the element in the set and the old value as arguments.</param>
+    ///   <param name="function(Main_site, value)" type="Function">A function returning the value to set. this is the current element. Receives the Main_site position of the element in the set and the old value as arguments.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2601,7 +2601,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Set the CSS width of each element in the set of matched elements.</summary>
-    ///   <param name="function(index, width)" type="Function">A function returning the width to set. Receives the index position of the element in the set and the old width as arguments. Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function(Main_site, width)" type="Function">A function returning the width to set. Receives the Main_site position of the element in the set and the old width as arguments. Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2613,7 +2613,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Wrap an HTML structure around each element in the set of matched elements.</summary>
-    ///   <param name="function(index)" type="Function">A callback function returning the HTML content or jQuery object to wrap around the matched elements. Receives the index position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function(Main_site)" type="Function">A callback function returning the HTML content or jQuery object to wrap around the matched elements. Receives the Main_site position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2632,7 +2632,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Wrap an HTML structure around the content of each element in the set of matched elements.</summary>
-    ///   <param name="function(index)" type="Function">A callback function which generates a structure to wrap around the content of the matched elements. Receives the index position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function(Main_site)" type="Function">A callback function which generates a structure to wrap around the content of the matched elements. Receives the Main_site position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },

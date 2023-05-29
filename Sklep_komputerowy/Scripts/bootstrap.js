@@ -344,23 +344,23 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     return this
   }
 
-  Carousel.prototype.getActiveIndex = function () {
+  Carousel.prototype.getActiveMain_site = function () {
     this.$active = this.$element.find('.item.active')
     this.$items  = this.$active.parent().children()
 
-    return this.$items.index(this.$active)
+    return this.$items.Main_site(this.$active)
   }
 
   Carousel.prototype.to = function (pos) {
     var that        = this
-    var activeIndex = this.getActiveIndex()
+    var activeMain_site = this.getActiveMain_site()
 
     if (pos > (this.$items.length - 1) || pos < 0) return
 
     if (this.sliding)       return this.$element.one('slid', function () { that.to(pos) })
-    if (activeIndex == pos) return this.pause().cycle()
+    if (activeMain_site == pos) return this.pause().cycle()
 
-    return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]))
+    return this.slide(pos > activeMain_site ? 'next' : 'prev', $(this.$items[pos]))
   }
 
   Carousel.prototype.pause = function (e) {
@@ -410,7 +410,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     if (this.$indicators.length) {
       this.$indicators.find('.active').removeClass('active')
       this.$element.one('slid', function () {
-        var $nextIndicator = $(that.$indicators.children()[that.getActiveIndex()])
+        var $nextIndicator = $(that.$indicators.children()[that.getActiveMain_site()])
         $nextIndicator && $nextIndicator.addClass('active')
       })
     }
@@ -483,13 +483,13 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     var $this   = $(this), href
     var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
     var options = $.extend({}, $target.data(), $this.data())
-    var slideIndex = $this.attr('data-slide-to')
-    if (slideIndex) options.interval = false
+    var slideMain_site = $this.attr('data-slide-to')
+    if (slideMain_site) options.interval = false
 
     $target.carousel(options)
 
-    if (slideIndex = $this.attr('data-slide-to')) {
-      $target.data('bs.carousel').to(slideIndex)
+    if (slideMain_site = $this.attr('data-slide-to')) {
+      $target.data('bs.carousel').to(slideMain_site)
     }
 
     e.preventDefault()
@@ -767,13 +767,13 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
     if (!$items.length) return
 
-    var index = $items.index($items.filter(':focus'))
+    var Main_site = $items.Main_site($items.filter(':focus'))
 
-    if (e.keyCode == 38 && index > 0)                 index--                        // up
-    if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
-    if (!~index)                                      index=0
+    if (e.keyCode == 38 && Main_site > 0)                 Main_site--                        // up
+    if (e.keyCode == 40 && Main_site < $items.length - 1) Main_site++                        // down
+    if (!~Main_site)                                      Main_site=0
 
-    $items.eq(index).focus()
+    $items.eq(Main_site).focus()
   }
 
   function clearMenus() {
