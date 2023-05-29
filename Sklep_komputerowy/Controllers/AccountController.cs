@@ -163,7 +163,7 @@ namespace Sklep_komputerowy.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Main_site", "Home");
                 }
                 AddErrors(result);
             }
@@ -356,7 +356,7 @@ namespace Sklep_komputerowy.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Manage");
+                return RedirectToAction("Main_site", "Manage");
             }
 
             if (ModelState.IsValid)
@@ -392,7 +392,7 @@ namespace Sklep_komputerowy.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Main_site", "Home");
         }
 
         //
@@ -449,7 +449,7 @@ namespace Sklep_komputerowy.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Main_site", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
