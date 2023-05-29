@@ -8,7 +8,7 @@ namespace Sklep_komputerowy.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Main_site()
         {
             return View();
         }
@@ -19,7 +19,7 @@ namespace Sklep_komputerowy.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Basket()
         {
 
             return View();
