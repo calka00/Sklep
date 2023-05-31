@@ -11,3 +11,7 @@ Sklep_komputerowy/obj/
 Sklep_komputerowy/Sklep_komputerowy.csproj.user
 
 .config/
+
+Sklep_komputerowy/Properties/serviceDependencies.json
+Sklep_komputerowy/Properties/serviceDependencies.local.json
+Sklep_komputerowy/Properties/serviceDependencies.local.json.user
