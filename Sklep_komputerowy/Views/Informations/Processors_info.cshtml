@@ -1,4 +1,4 @@
-﻿@model Sklep_komputerowy.Models.podzespoły
+﻿@model EntityFrameworkModel.Podzespoly
 @{
     ViewBag.Title = "Procesory_info";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -68,10 +68,10 @@
                 <div class="row">
                     <div class="column">
                         <div class="text">
-                            @foreach (var spec in Model.Specyfikacje)
+                            @foreach (var spec in Model.Podzespoly_Cechy)
                             {
                                 <p>
-                                    @spec.Nazwa:<b>@spec.Wartosc</b>
+                                    @spec.Cechy.Nazwa: <b>@spec.Wartosc</b>
                                 </p>
                             }
                         </div>
@@ -80,7 +80,7 @@
                     <div class="column">
                         <div class="add">
                             <p>
-                                <h2><b>@Model.Cena</b></h2>
+                                <h2><b>Cena: @Model.Cena zł</b></h2>
                             </p>
                             <p>
                                 <a class="btn">Dodaj do koszyka</a>
@@ -89,7 +89,7 @@
                     </div>
 
                     <div class="column">
-                        <img src="@Url.Content(Model.Obraz)" alt="Procesor">
+                        <img src="@Url.Content(Model.Obrazki)" alt="Procesor">
                     </div>
                 </div>
             </ItemTemplate>

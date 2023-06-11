@@ -1,8 +1,7 @@
-﻿@model Sklep_komputerowy.Models.UnderCategory
-
+﻿@model IEnumerable<EntityFrameworkModel.Koszyk_Podzespol>
 @{
-    Layout = "_Layout.cshtml";
-  
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <!DOCTYPE html>
@@ -71,21 +70,20 @@
             
                 <ItemTemplate>
                     <div class="row">
-                            @foreach (var info in Model.Informations)
+                            @foreach (var item in Model)
                             {
                                 <div class="column">
 
                                     <div class="column">
                                             <p>
-                                                <img class="image" onclick="location.href='@Url.Action("Processors_info","Informations", new { storeID = 1, processorID = Model.ID })'" src="@Url.Content(info.Obraz)" alt="Procesor">
-                                              @*  <a href="@Url.Action("Processors_info","Informations", new { storeID = 1, processorID = Model.ID })"></a>*@
+                                               <img class="image" onclick="location.href='@Url.Action("Processors_info","Informations", new { id = item.Id})'" src="@Url.Content(item.Obrazki)">
                                             </p>
                                     </div>
 
                                     <div class="column">
                                         <div class="overlay">
                                             <p>
-                                                @info.Nazwa
+                                                @item.Nazwa
                                             </p>
                                         </div>
                                     </div>

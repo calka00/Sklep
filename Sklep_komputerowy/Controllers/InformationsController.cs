@@ -1,4 +1,5 @@
-﻿using Sklep_komputerowy.Models;
+﻿using EntityFrameworkModel;
+using Sklep_komputerowy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,43 +10,25 @@ namespace Sklep_komputerowy.Controllers
 {
     public class InformationsController : Controller
     {
-        public ActionResult Processors_info()
+        private SklepInternetowy _dbContext;
+        public InformationsController()
         {
-            podzespoły info = new podzespoły
-            {
-                Specyfikacje = new List<Specyfikacja>
-                {
-                    new Specyfikacja()
-                    {
-                        Nazwa = "Częstotliwość taktowania procesora",
-                        Wartosc = "3 GHz"
-                    },
-                    new Specyfikacja()
-                    {
-                        Nazwa = "Liczba rdzeni",
-                        Wartosc = "24"
-                    },
-                    new Specyfikacja()
-                    {
-                        Nazwa = "Odblokowany mnożnik",
-                        Wartosc = "Tak"
-                    },
-                    new Specyfikacja()
-                    {
-                        Nazwa = "Typ gniazda",
-                        Wartosc = "Socket 1700"
-                    },
-                    new Specyfikacja()
-                    {
-                        Nazwa = "Załączone chłodzenie",
-                        Wartosc = "Nie"
-                    },
-                },
-                Obraz = "~/Pictures/Procesory/Intel Core i9-13900K.jfif",
-                Cena = "Cena: 2902,99 zł"
-            };
+            _dbContext = new SklepInternetowy();
+        }
 
-            return View(info);
+        public ActionResult Processors_info(int id)
+        {
+            // Pobranie procesora o określonym ID
+            var processor = _dbContext.Podzespoly.Where(x => x.Id == id).Single();
+            if (processor == null)
+            {
+                // Obsługa błędu, jeśli procesor o podanym ID nie istnieje
+                return HttpNotFound();
+            }
+
+            // Przekazanie modelu procesora do widoku
+            return View(processor);
+
         }
     }
 }

@@ -1,90 +1,106 @@
-﻿@{
-    ViewBag.Title = "Procesory";
+﻿@model IEnumerable<EntityFrameworkModel.Podzespoly>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
+
+<!DOCTYPE html>
+
 <style>
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+    }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
-}
+    .column {
+        position: sticky;
+        flex: 33.33%;
+        padding: 5px;
+    }
 
-.column {
-  position: sticky;
-  flex: 33.33%;
-  padding: 5px;
-}
+    .image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        width: 50%;
+        height: 190px;
+        cursor: pointer;
+    }
 
-.image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  height: 190px;
-  cursor: pointer;
-}
+    .overlay {
+        position: sticky;
+        bottom: 10px;
+        background: rgb(0, 0, 0);
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+        width: 100%;
+        transition: .3s ease;
+        opacity: 0;
+        font-size: 15px;
+        padding: 5px;
+        text-align: center;
+    }
 
-.overlay {
-  position: sticky;
-  bottom: 10px;
-  background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.5); /* Black see-through */
-  color: #f1f1f1;
-  width: 100%;
-  transition: .3s ease;
-  opacity:0;
-  color: white;
-  font-size: 15px;
-  padding: 5px;
-  text-align: center;
-}
+    .column:hover .overlay {
+        opacity: 1;
+    }
 
-.column:hover .overlay {
-  opacity: 1;
-}
+    .btn {
+        width: 60%;
+        display: block;
+        margin: auto;
+        cursor: pointer;
+        color: blue;
+    }
 
-.btn {
-    width: 60%;
-    display: block;
-    margin: auto;
-    cursor: pointer;
-    color: blue;
-}
-
-.btn:hover {
-    background-color: #f1f1f1;
-}
+        .btn:hover {
+            background-color: #f1f1f1;
+        }
 </style>
 
-<div class="row">
-    <div class="column">
-        <img class="image" onclick="location.href='@Url.Action("Processors_info","Informations")'" src="@Url.Content("~/Pictures/Procesory/Intel Core i9-13900K.jfif")" alt="Intel Core i9-13900K BX8071513900K">
-        <div class="overlay">Intel Core i9-13900K</div>
-        <p><a class="btn">Dodaj do koszyka</a></p>
-    </div>
-    <div class="column">
-        <img class="image" onclick="location.href='@Url.Action("Processors_info","Informations")'" src="@Url.Content("~/Pictures/Procesory/Intel Core i7-12700K.jfif")" alt="Intel Core i7-12700K">
-        <div class="overlay">Intel Core i7-12700K</div>
-        <p><a class="btn">Dodaj do koszyka</a></p>
-    </div>
-    <div class="column">
-        <img class="image" onclick="location.href='@Url.Action("Processors_info","Informations")'" src="@Url.Content("~/Pictures/Procesory/AMD Ryzen 7 5700X 100-100000926WOF.jfif")" alt="AMD Ryzen 7 5700X 100-100000926WOF">
-        <div class="overlay">AMD Ryzen 7 5700X</div>
-        <p><a class="btn">Dodaj do koszyka</a></p>
-    </div>
-    <div class="column">
-        <img class="image" onclick="location.href='@Url.Action("Processors_info","Informations")'" src="@Url.Content("~/Pictures/Procesory/Intel Core i5-10400.jfif")" alt="Intel Core i5-10400">
-        <div class="overlay">Intel Core i5-10400</div>
-        <p><a class="btn">Dodaj do koszyka</a></p>
-    </div>
-    <div class="column">
-        <img class="image" onclick="location.href='@Url.Action("Processors_info","Informations")'" src="@Url.Content("~/Pictures/Procesory/amd ryzen 5 3600.jfif")" alt="amd ryzen 5 3600">
-        <div class="overlay">AMD Ryzen 5 3600</div>
-        <p><a class="btn">Dodaj do koszyka</a></p>
-    </div>
-    <div class="column">
-        <img class="image" onclick="location.href='@Url.Action("Processors_info","Informations")'" src="@Url.Content("~/Pictures/Procesory/AMD Ryzen 7 3700x.jfif")" alt="AMD Ryzen 7 3700x">
-        <div class="overlay">AMD Ryzen 7 3700x</div>
-        <p><a class="btn">Dodaj do koszyka</a></p>
-    </div>
-</div>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <form id="form1">
+        <div>
+
+            <ItemTemplate>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="column">
+
+                            <div class="column">
+                                <p>
+                                    <img class="image" onclick="location.href='@Url.Action("Processors_info","Informations", new { id = item.Id})'" src="@Url.Content(item.Obrazki)">
+                                </p>
+                            </div>
+
+                            <div class="column">
+                                <div class="overlay">
+                                    <p>
+                                        @item.Nazwa
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="column">
+                                <p>
+                                    <a class="btn">Dodaj do koszyka</a>
+                                </p>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+
+            </ItemTemplate>
+
+        </div>
+    </form>
+</body>
+</html>

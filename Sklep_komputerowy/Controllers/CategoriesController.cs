@@ -1,5 +1,5 @@
 ﻿using System;
-using System;
+using EntityFrameworkModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +9,17 @@ namespace Sklep_komputerowy.Controllers
 {
     public class CategoriesController : Controller
     {
-        public ActionResult Processors()
+        private SklepInternetowy _dbContext;
+        public CategoriesController()
         {
+            _dbContext = new SklepInternetowy();
+        }
 
-            return View();
+        public ActionResult Processors(int id)
+        {
+            var query = _dbContext.Podzespoly.Where(x => x.KategoriaId == id).ToList();
+
+            return View(query);
         }
     }
 }
