@@ -26,7 +26,6 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UzytkownikId" Type="int" Nullable="false" />
-          <Property Name="Ilosc" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Koszyk_Podzespol">
           <Key>
@@ -35,6 +34,7 @@
           </Key>
           <Property Name="KoszykId" Type="int" Nullable="false" />
           <Property Name="PodzespolId" Type="int" Nullable="false" />
+          <Property Name="Ilosc" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="Podzespoly">
           <Key>
@@ -200,7 +200,6 @@ warning 6002: The table/view 'MSSQLLocalDB.dbo.Podzespoly_Cechy' does not have a
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UzytkownikId" Type="Int32" Nullable="false" />
-          <Property Name="Ilosc" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Koszyk_Podzespol" Relationship="Self.FK_Koszyk_Podzespol_Koszyk" FromRole="Koszyk" ToRole="Koszyk_Podzespol" />
           <NavigationProperty Name="Uzytkownicy" Relationship="Self.FK_Koszyk_Uzytkownicy" FromRole="Koszyk" ToRole="Uzytkownicy" />
         </EntityType>
@@ -213,6 +212,7 @@ warning 6002: The table/view 'MSSQLLocalDB.dbo.Podzespoly_Cechy' does not have a
           <Property Name="PodzespolId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Koszyk" Relationship="Self.FK_Koszyk_Podzespol_Koszyk" FromRole="Koszyk_Podzespol" ToRole="Koszyk" />
           <NavigationProperty Name="Podzespoly" Relationship="Self.FK_Koszyk_Podzespol_Podzespoly" FromRole="Koszyk_Podzespol" ToRole="Podzespoly" />
+          <Property Name="Ilosc" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="Podzespoly">
           <Key>
@@ -385,13 +385,13 @@ warning 6002: The table/view 'MSSQLLocalDB.dbo.Podzespoly_Cechy' does not have a
               <MappingFragment StoreEntitySet="Koszyk">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UzytkownikId" ColumnName="UzytkownikId" />
-                <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Koszyk_Podzespol">
             <EntityTypeMapping TypeName="MSSQLLocalDBModel.Koszyk_Podzespol">
               <MappingFragment StoreEntitySet="Koszyk_Podzespol">
+                <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
                 <ScalarProperty Name="KoszykId" ColumnName="KoszykId" />
                 <ScalarProperty Name="PodzespolId" ColumnName="PodzespolId" />
               </MappingFragment>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="59a323117aea41cd8a3050a8dba6db48" Name="Diagram1">
+        <EntityTypeShape EntityType="MSSQLLocalDBModel.Kategorie" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSSQLLocalDBModel.Koszyk" Width="1.5" PointX="7.875" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSSQLLocalDBModel.Koszyk_Podzespol" Width="1.5" PointX="5.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSSQLLocalDBModel.Podzespoly" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSSQLLocalDBModel.Uzytkownicy" Width="1.5" PointX="6.625" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="MSSQLLocalDBModel.FK_Podzespoly_Kategorie" ManuallyRouted="false" />
+        <AssociationConnector Association="MSSQLLocalDBModel.FK_Koszyk_Podzespol_Koszyk" ManuallyRouted="false" />
+        <AssociationConnector Association="MSSQLLocalDBModel.FK_Koszyk_Uzytkownicy" ManuallyRouted="false" />
+        <AssociationConnector Association="MSSQLLocalDBModel.FK_Koszyk_Podzespol_Podzespoly" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MSSQLLocalDBModel.Cechy" Width="1.5" PointX="0.5" PointY="4.625" />
+        <EntityTypeShape EntityType="MSSQLLocalDBModel.Podzespoly_Cechy" Width="1.5" PointX="2.875" PointY="4.5" />
+        <AssociationConnector Association="MSSQLLocalDBModel.FK_Podzespoly_Cechy_Cechy" />
+        <AssociationConnector Association="MSSQLLocalDBModel.FK_Podzespoly_Cechy_Podzespoly" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

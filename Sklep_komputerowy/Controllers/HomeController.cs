@@ -4,6 +4,8 @@ using EntityFrameworkModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Security.Claims;
+using System.Threading;
 
 namespace Sklep_komputerowy.Controllers
 {
@@ -33,20 +35,25 @@ namespace Sklep_komputerowy.Controllers
         public ActionResult Main_site()
         {
             var query = _dbContext.Kategorie.ToList();
-
             return View(query);
         }
-
-        public ActionResult About()
-        {
-
-            return View();
-        }
-
+        
+        [Authorize]
         public ActionResult Basket()
         {
+            var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
+            // Get the claims values
+            string userIdValue = identity.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier)
+                               .Select(c => c.Value).SingleOrDefault();
 
-            return View();
+            if (string.IsNullOrEmpty(userIdValue))
+            {
+                return RedirectToAction("Login", "Account", null);
+            }
+            var userId = int.Parse(userIdValue);
+
+            var koszyk = _dbContext.Koszyk_Podzespol.Where(x => x.Koszyk.UzytkownikId == userId).ToList();
+            return View(koszyk);
         }
     }
 }

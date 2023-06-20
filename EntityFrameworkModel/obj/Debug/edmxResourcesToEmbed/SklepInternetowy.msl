@@ -15,13 +15,13 @@
         <MappingFragment StoreEntitySet="Koszyk">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UzytkownikId" ColumnName="UzytkownikId" />
-          <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Koszyk_Podzespol">
       <EntityTypeMapping TypeName="MSSQLLocalDBModel.Koszyk_Podzespol">
         <MappingFragment StoreEntitySet="Koszyk_Podzespol">
+          <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
           <ScalarProperty Name="KoszykId" ColumnName="KoszykId" />
           <ScalarProperty Name="PodzespolId" ColumnName="PodzespolId" />
         </MappingFragment>

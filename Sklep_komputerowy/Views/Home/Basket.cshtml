@@ -1,5 +1,49 @@
-﻿@{
-    ViewBag.Title = "Koszyk";
+﻿@model IEnumerable<EntityFrameworkModel.Koszyk_Podzespol>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    WebGrid grid = new WebGrid(Model, canPage: true,  rowsPerPage: 3, canSort: true);
 }
 
+<style type="text/css">
+    .table {
+        margin: 4px;
+        border-collapse: collapse;
+        width: 300px;
+    }
+
+    .header {
+        background-color: #101010;
+        font-weight: bold;
+        color: #999999;
+    }
+
+    .table th, .table td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+</style>
+  
+
+@grid.GetHtml(
+    tableStyle: "table", // applying style on grid
+    fillEmptyRows: true,                 //show empty row when there is only one record on page to it will display all empty rows there.
+    headerStyle: "header", //applying style.
+    footerStyle: "grid-footer",//, //applying style.
+    mode: WebGridPagerModes.All, //paging to grid
+    firstText: "<< First",
+    previousText: "< Prev",
+    nextText: "Next >",
+    lastText: "Last >>",
+     columns: new[]  // colums in grid
+     {
+         grid.Column("Podzespoly.Nazwa", "Nazwa"),
+         grid.Column("Podzespoly.Cena", "Cena"),
+         grid.Column("Ilosc", "Ilość"),
+         grid.Column(header:"Cena Łączna", format:@<text>@(item.Ilosc * item.Podzespoly.Cena)</text>),
+         grid.Column(header: "Odejmij", format: @<text>@Html.ActionLink("Obniż o 1", "DecreaseItemInBasket", "Basket", new { podzespolId = item.PodzespolId, koszykId = item.KoszykId }, null)</text>),
+         grid.Column(header: "Usuń", format: @<text>@Html.ActionLink("Usuń", "RemoveFromBasket", "Basket", new { podzespolId = item.PodzespolId, koszykId = item.KoszykId }, null)</text>)
+    }
+    )
+ 
 

@@ -56,6 +56,25 @@
             background-color: #f1f1f1;
         }
 </style>
+
+<script type="text/javascript">
+        //modify as needed to make it pass in what you need.
+    function addToBasket(id_podzespol) {
+            $.ajax({
+                url: "@Url.Action("AddToBasket", "Basket")",
+                data: { id: id_podzespol },
+                cache: false,
+                type: "post",
+                success: function (data) {
+                    alert("Przedmiot dodany do koszyka.");
+                },
+                error: function (error) {
+                    alert("Coś poszło nie tak w czasie dodawania.");
+                }
+            });
+        }
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
@@ -83,7 +102,7 @@
                                 <h2><b>Cena: @Model.Cena zł</b></h2>
                             </p>
                             <p>
-                                <a class="btn">Dodaj do koszyka</a>
+                                <a class="btn" onclick="addToBasket(@Model.Id)">Dodaj do koszyka</a>
                             </p>
                         </div>
                     </div>

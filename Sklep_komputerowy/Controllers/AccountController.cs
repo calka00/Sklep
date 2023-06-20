@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Sklep_komputerowy.Models;
+using EntityFrameworkModel;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace Sklep_komputerowy.Controllers
 {
@@ -17,15 +20,18 @@ namespace Sklep_komputerowy.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private SklepInternetowy _dbContext;
 
         public AccountController()
         {
+            _dbContext = new SklepInternetowy();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _dbContext = new SklepInternetowy();
         }
 
         public ApplicationSignInManager SignInManager
@@ -72,23 +78,40 @@ namespace Sklep_komputerowy.Controllers
             {
                 return View(model);
             }
+            
+            //Hash should be here to compare DB with model
+            var user = _dbContext.Uzytkownicy.Where(x => x.Nazwa == model.Email && x.Haslo == model.Password).FirstOrDefault();
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            if (user!=null)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                SignInAsync(user);
+
+                return RedirectToLocal(returnUrl);
             }
+            else
+            {
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
+            }
+        }
+
+        private void SignInAsync(Uzytkownicy User)
+        {
+            var claims = new List<Claim>();
+
+            claims.Add(new Claim(ClaimTypes.Name, User.Nazwa));
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, User.Id.ToString()));
+            var id = new ClaimsIdentity(claims,
+                                        DefaultAuthenticationTypes.ApplicationCookie);
+            var claimsPrincipal = new ClaimsPrincipal(id);
+            // Set current principal
+            Thread.CurrentPrincipal = claimsPrincipal;
+            var ctx = Request.GetOwinContext();
+            var authenticationManager = ctx.Authentication;
+
+            authenticationManager.SignIn(id);
         }
 
         //
@@ -151,21 +174,31 @@ namespace Sklep_komputerowy.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                //Hash should be here to compare DB with model
+                var user = _dbContext.Uzytkownicy.Where(x => x.Nazwa == model.Email).FirstOrDefault();
+
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, change to shouldLockout: true
+                if (user == null)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    var new_user = new Uzytkownicy
+                    {
+                        Nazwa = model.Email,
+                        Haslo = model.Password,
+                        Imie = model.Email,
+                        Nazwisko = model.Email
+                    };
+                    _dbContext.Uzytkownicy.Add(new_user);
+                    _dbContext.SaveChanges();
+                    SignInAsync(new_user);
 
                     return RedirectToAction("Main_site", "Home");
                 }
-                AddErrors(result);
+                else
+                {
+                    ModelState.AddModelError("", "Użytkownik o podanej nazwie już istnieje.");
+                    return View(model);
+                }
             }
 
             // If we got this far, something failed, redisplay form
@@ -388,7 +421,6 @@ namespace Sklep_komputerowy.Controllers
         //
         // POST: /Account/LogOff
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);

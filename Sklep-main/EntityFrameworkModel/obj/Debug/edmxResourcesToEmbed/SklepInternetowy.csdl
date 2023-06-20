@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MSSQLLocalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Kategorie">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Podzespoly" Relationship="Self.FK_Podzespoly_Kategorie" FromRole="Kategorie" ToRole="Podzespoly" />
+    <Property Name="Obraz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Koszyk">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UzytkownikId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Koszyk_Podzespol" Relationship="Self.FK_Koszyk_Podzespol_Koszyk" FromRole="Koszyk" ToRole="Koszyk_Podzespol" />
+    <NavigationProperty Name="Uzytkownicy" Relationship="Self.FK_Koszyk_Uzytkownicy" FromRole="Koszyk" ToRole="Uzytkownicy" />
+  </EntityType>
+  <EntityType Name="Koszyk_Podzespol">
+    <Key>
+      <PropertyRef Name="KoszykId" />
+      <PropertyRef Name="PodzespolId" />
+    </Key>
+    <Property Name="KoszykId" Type="Int32" Nullable="false" />
+    <Property Name="PodzespolId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Koszyk" Relationship="Self.FK_Koszyk_Podzespol_Koszyk" FromRole="Koszyk_Podzespol" ToRole="Koszyk" />
+    <NavigationProperty Name="Podzespoly" Relationship="Self.FK_Koszyk_Podzespol_Podzespoly" FromRole="Koszyk_Podzespol" ToRole="Podzespoly" />
+    <Property Name="Ilosc" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Podzespoly">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cena" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="KategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="Obrazki" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Kategorie" Relationship="Self.FK_Podzespoly_Kategorie" FromRole="Podzespoly" ToRole="Kategorie" />
+    <NavigationProperty Name="Koszyk_Podzespol" Relationship="Self.FK_Koszyk_Podzespol_Podzespoly" FromRole="Podzespoly" ToRole="Koszyk_Podzespol" />
+    <NavigationProperty Name="Podzespoly_Cechy" Relationship="MSSQLLocalDBModel.FK_Podzespoly_Cechy_Podzespoly" FromRole="Podzespoly" ToRole="Podzespoly_Cechy" />
+  </EntityType>
+  <EntityType Name="Uzytkownicy">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Haslo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Koszyk" Relationship="Self.FK_Koszyk_Uzytkownicy" FromRole="Uzytkownicy" ToRole="Koszyk" />
+    <Property Name="CzyAdmin" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Podzespoly_Kategorie">
+    <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
+    <End Role="Podzespoly" Type="Self.Podzespoly" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategorie">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Podzespoly">
+        <PropertyRef Name="KategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Koszyk_Podzespol_Koszyk">
+    <End Role="Koszyk" Type="Self.Koszyk" Multiplicity="1" />
+    <End Role="Koszyk_Podzespol" Type="Self.Koszyk_Podzespol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Koszyk">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Koszyk_Podzespol">
+        <PropertyRef Name="KoszykId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Koszyk_Uzytkownicy">
+    <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+    <End Role="Koszyk" Type="Self.Koszyk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uzytkownicy">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Koszyk">
+        <PropertyRef Name="UzytkownikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Koszyk_Podzespol_Podzespoly">
+    <End Role="Podzespoly" Type="Self.Podzespoly" Multiplicity="1" />
+    <End Role="Koszyk_Podzespol" Type="Self.Koszyk_Podzespol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Podzespoly">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Koszyk_Podzespol">
+        <PropertyRef Name="PodzespolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SklepInternetowy" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Kategorie" EntityType="Self.Kategorie" />
+    <EntitySet Name="Koszyk" EntityType="Self.Koszyk" />
+    <EntitySet Name="Koszyk_Podzespol" EntityType="Self.Koszyk_Podzespol" />
+    <EntitySet Name="Podzespoly" EntityType="Self.Podzespoly" />
+    <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" />
+    <AssociationSet Name="FK_Podzespoly_Kategorie" Association="Self.FK_Podzespoly_Kategorie">
+      <End Role="Kategorie" EntitySet="Kategorie" />
+      <End Role="Podzespoly" EntitySet="Podzespoly" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Koszyk_Podzespol_Koszyk" Association="Self.FK_Koszyk_Podzespol_Koszyk">
+      <End Role="Koszyk" EntitySet="Koszyk" />
+      <End Role="Koszyk_Podzespol" EntitySet="Koszyk_Podzespol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Koszyk_Uzytkownicy" Association="Self.FK_Koszyk_Uzytkownicy">
+      <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+      <End Role="Koszyk" EntitySet="Koszyk" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Koszyk_Podzespol_Podzespoly" Association="Self.FK_Koszyk_Podzespol_Podzespoly">
+      <End Role="Podzespoly" EntitySet="Podzespoly" />
+      <End Role="Koszyk_Podzespol" EntitySet="Koszyk_Podzespol" />
+    </AssociationSet>
+    <EntitySet Name="Cechy" EntityType="MSSQLLocalDBModel.Cechy" />
+    <EntitySet Name="Podzespoly_Cechy" EntityType="MSSQLLocalDBModel.Podzespoly_Cechy" />
+    <AssociationSet Name="FK_Podzespoly_Cechy_Cechy" Association="MSSQLLocalDBModel.FK_Podzespoly_Cechy_Cechy">
+      <End Role="Cechy" EntitySet="Cechy" />
+      <End Role="Podzespoly_Cechy" EntitySet="Podzespoly_Cechy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Podzespoly_Cechy_Podzespoly" Association="MSSQLLocalDBModel.FK_Podzespoly_Cechy_Podzespoly">
+      <End Role="Podzespoly" EntitySet="Podzespoly" />
+      <End Role="Podzespoly_Cechy" EntitySet="Podzespoly_Cechy" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cechy">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Nazwa" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Podzespoly_Cechy" Relationship="MSSQLLocalDBModel.FK_Podzespoly_Cechy_Cechy" FromRole="Cechy" ToRole="Podzespoly_Cechy" />
+  </EntityType>
+  <EntityType Name="Podzespoly_Cechy">
+    <Key>
+      <PropertyRef Name="CechyId" />
+      <PropertyRef Name="PodzespolyId" />
+      <PropertyRef Name="Wartosc" />
+    </Key>
+    <Property Name="CechyId" Type="Int32" Nullable="false" />
+    <Property Name="PodzespolyId" Type="Int32" Nullable="false" />
+    <Property Name="Wartosc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Cechy" Relationship="MSSQLLocalDBModel.FK_Podzespoly_Cechy_Cechy" FromRole="Podzespoly_Cechy" ToRole="Cechy" />
+    <NavigationProperty Name="Podzespoly" Relationship="MSSQLLocalDBModel.FK_Podzespoly_Cechy_Podzespoly" FromRole="Podzespoly_Cechy" ToRole="Podzespoly" />
+  </EntityType>
+  <Association Name="FK_Podzespoly_Cechy_Cechy">
+    <End Type="MSSQLLocalDBModel.Cechy" Role="Cechy" Multiplicity="1" />
+    <End Type="MSSQLLocalDBModel.Podzespoly_Cechy" Role="Podzespoly_Cechy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cechy">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Podzespoly_Cechy">
+        <PropertyRef Name="CechyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Podzespoly_Cechy_Podzespoly">
+    <End Type="MSSQLLocalDBModel.Podzespoly" Role="Podzespoly" Multiplicity="1" />
+    <End Type="MSSQLLocalDBModel.Podzespoly_Cechy" Role="Podzespoly_Cechy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Podzespoly">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Podzespoly_Cechy">
+        <PropertyRef Name="PodzespolyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

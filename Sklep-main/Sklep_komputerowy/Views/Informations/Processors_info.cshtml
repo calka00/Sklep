@@ -1,0 +1,119 @@
+﻿@model EntityFrameworkModel.Podzespoly
+@{
+    ViewBag.Title = "Procesory_info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<style>
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+
+    .column {
+        position: sticky;
+        flex: 33.33%;
+        padding: 5px;
+    }
+
+    .image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        height: 190px;
+    }
+
+    .text {
+        display: block;
+        font-size: 14px;
+        margin: auto;
+        width: 80%;
+        height: 190px;
+        text-align: center;
+        padding: 30px 0;
+    }
+
+    .add {
+        display: block;
+        font-size: 14px;
+        padding: 10px;
+        text-align: center;
+        padding: 50px 0;
+    }
+
+    .btn {
+        width: 100%;
+        display: block;
+        position: sticky;
+        cursor: pointer;
+        color: blue;
+    }
+
+        .btn:hover {
+            background-color: #f1f1f1;
+        }
+</style>
+
+<script type="text/javascript">
+        //modify as needed to make it pass in what you need.
+    function addToBasket(id_podzespol) {
+            $.ajax({
+                url: "@Url.Action("AddToBasket", "Basket")",
+                data: { id: id_podzespol },
+                cache: false,
+                type: "post",
+                success: function (data) {
+                    alert("Przedmiot dodany do koszyka.");
+                },
+                error: function (error) {
+                    alert("Coś poszło nie tak w czasie dodawania.");
+                }
+            });
+        }
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <form id="form1">
+        <div>
+
+            <ItemTemplate>
+                <div class="row">
+                    <div class="column">
+                        <div class="text">
+                            @foreach (var spec in Model.Podzespoly_Cechy)
+                            {
+                                <p>
+                                    @spec.Cechy.Nazwa: <b>@spec.Wartosc</b>
+                                </p>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="add">
+                            <p>
+                                <h2><b>Cena: @Model.Cena zł</b></h2>
+                            </p>
+                            <p>
+                                <a class="btn" onclick="addToBasket(@Model.Id)">Dodaj do koszyka</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <img src="@Url.Content(Model.Obrazki)" alt="Procesor">
+                    </div>
+                </div>
+            </ItemTemplate>
+
+        </div>
+    </form>
+</body>
+</html>

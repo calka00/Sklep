@@ -21,7 +21,6 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UzytkownikId" Type="int" Nullable="false" />
-    <Property Name="Ilosc" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Koszyk_Podzespol">
     <Key>
@@ -30,6 +29,7 @@
     </Key>
     <Property Name="KoszykId" Type="int" Nullable="false" />
     <Property Name="PodzespolId" Type="int" Nullable="false" />
+    <Property Name="Ilosc" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="Podzespoly">
     <Key>

@@ -15,7 +15,6 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UzytkownikId" Type="Int32" Nullable="false" />
-    <Property Name="Ilosc" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Koszyk_Podzespol" Relationship="Self.FK_Koszyk_Podzespol_Koszyk" FromRole="Koszyk" ToRole="Koszyk_Podzespol" />
     <NavigationProperty Name="Uzytkownicy" Relationship="Self.FK_Koszyk_Uzytkownicy" FromRole="Koszyk" ToRole="Uzytkownicy" />
   </EntityType>
@@ -28,6 +27,7 @@
     <Property Name="PodzespolId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Koszyk" Relationship="Self.FK_Koszyk_Podzespol_Koszyk" FromRole="Koszyk_Podzespol" ToRole="Koszyk" />
     <NavigationProperty Name="Podzespoly" Relationship="Self.FK_Koszyk_Podzespol_Podzespoly" FromRole="Koszyk_Podzespol" ToRole="Podzespoly" />
+    <Property Name="Ilosc" Type="Int16" Nullable="false" />
   </EntityType>
   <EntityType Name="Podzespoly">
     <Key>
